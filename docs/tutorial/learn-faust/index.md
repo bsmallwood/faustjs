@@ -190,7 +190,7 @@ The app is set up so that when Faust renders a page, it includes an additional `
 
 ### 1. Update `single` template
 
-Open your `wp-templates/single.js` template. Above the existing `return` statement, add the code below.
+Open your `wp-templates/single.js` template. Above the existing `const` line that defines `title` and `content`, add the code below.
 
 ```jsx title="src/wp-templates/single.js"
 if (props.loading) {
@@ -230,11 +230,11 @@ Your `single` template file should now look like this:
 import { gql } from '@apollo/client';
 
 export default function SingleTemplate(props) {
-	const { title, content } = props.data.post;
-
 	if (props.loading) {
 		return <p>Loading...</p>;
 	}
+
+	const { title, content } = props.data.post;
 
 	return (
 		<>
@@ -348,11 +348,11 @@ Your updated `SingleTemplate` component should now look like this:
 
 ```jsx title="src/wp-templates/single.js"
 export default function SingleTemplate(props) {
-	const { title, editorBlocks } = props.data.post;
-
 	if (props.loading) {
 		return <p>Loading...</p>;
 	}
+
+	const { title, editorBlocks } = props.data.post;
 
 	return (
 		<>
